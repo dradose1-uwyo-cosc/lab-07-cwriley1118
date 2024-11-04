@@ -6,6 +6,9 @@
 # Sources, people worked with, help given to: 
 # Attempted to use methods detailed at https://www.w3schools.com/python/ref_string_replace.asp to handle negative numbers but decided to use [1:] instead
 # Used https://learnpython.com/blog/end-loop-python/ to remind of the break function
+# Used https://www.w3schools.com/python/ref_string_split.asp for the .split() function
+# Used https://www.w3schools.com/python/python_try_except.asp to learn about try-except bloccks and how they can be used
+
 
 # Prompt the user for an upper bound 
 # Write a while loop that gives the factorial of that upper bound
@@ -17,11 +20,12 @@
 
 factorial = 1
 bound = input("Enter Numeric Upper Bound Here: ")
-for num in bound:
+while True:
     if bound.isnumeric():
         for answer in range(1, int(bound) + 1):
             factorial *= answer
         print(factorial)
+        break
     else:
         print("Please enter numberical values only.")
         bound = input("Enter Numeric Upper Bound Here: ")
@@ -87,6 +91,56 @@ print("*"*75)
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
 while True:
-    expression = input(" enter a two operand expresion using +,-,/,*, or %: ")
+    expression = input("Enter a two operand expresion using +,-,/,*, or %: ")
     if expression.lower() == "exit":
         break
+    try:
+        if '+' in expression:
+            operand1, operand2 = expression.split("+", 1)
+            number1 = operand1.strip()
+            integer1 = int(number1)
+            number2 =  operand2.strip()
+            integer2 = int(number2)
+            answer = integer1 + integer2
+            print(answer)
+        
+        elif '-' in expression:
+            operand1, operand2 = expression.split("-", 1)
+            number1 = operand1.strip()
+            integer1 = int(number1)
+            number2 =  operand2.strip()
+            integer2 = int(number2)
+            answer = integer1 - integer2
+            print(answer)
+        
+        elif '*' in expression:
+            operand1, operand2 = expression.split("*", 1)
+            number1 = operand1.strip()
+            integer1 = int(number1)
+            number2 =  operand2.strip()
+            integer2 = int(number2)
+            answer = integer1 * integer2
+            print(answer)
+        
+        elif "/" in expression:
+            operand1, operand2 = expression.split("/", 1)
+            number1 = operand1.strip()
+            integer1 = int(number1)
+            number2 =  operand2.strip()
+            integer2 = int(number2)
+            answer = integer1 / integer2
+            print(answer)
+        
+        elif "%" in expression:
+            operand1, operand2 = expression.split("%", 1)
+            number1 = operand1.strip()
+            integer1 = int(number1)
+            number2 =  operand2.strip()
+            integer2 = int(number2)
+            answer = integer1 % integer2
+            print(answer)
+        
+        else:
+            continue
+    except:
+        print("An Error Occurred. Please ensure that you enter operands and operators in the form 'operand' '+,-,*,/,%' 'operand'")
