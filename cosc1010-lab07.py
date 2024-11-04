@@ -1,13 +1,11 @@
-# Your Name Here
+# Colton RIley
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 11/3/24
+# Lab 07
+# Lab Section: 15
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
-
+# Attempted to use methods detailed at https://www.w3schools.com/python/ref_string_replace.asp to handle negative numbers but decided to use [1:] instead
+# Used https://learnpython.com/blog/end-loop-python/ to remind of the break function
 
 # Prompt the user for an upper bound 
 # Write a while loop that gives the factorial of that upper bound
@@ -18,6 +16,18 @@
 # You will continue to prompt the user until a proper integer value is entered
 
 factorial = 1
+bound = input("Enter Numeric Upper Bound Here: ")
+for num in bound:
+    if bound.isnumeric():
+        for answer in range(1, int(bound) + 1):
+            factorial *= answer
+        print(factorial)
+    else:
+        print("Please enter numberical values only.")
+        bound = input("Enter Numeric Upper Bound Here: ")
+
+
+
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -38,7 +48,24 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
-
+while True:
+    number = input("Enter positive or negative number, 'exit' to quit: ")
+    if number.lower() == "exit":
+        break
+    elif number[1:].isdigit():
+        if number[0] == "-":
+            integer = -int(number[1:])
+        else:
+            integer = int(number)
+        num_sum += integer
+    elif number.isdigit():
+        if number[0] == "-":
+            integer = -int(number[1:])
+        else:
+            integer = int(number)
+        num_sum += integer
+    else:
+        print("Input is not an integer. Please enter a positive or negative number.")
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +86,7 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+while True:
+    expression = input(" enter a two operand expresion using +,-,/,*, or %: ")
+    if expression.lower() == "exit":
+        break
